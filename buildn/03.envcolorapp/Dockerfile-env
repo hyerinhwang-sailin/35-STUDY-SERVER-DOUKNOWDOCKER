@@ -1,0 +1,12 @@
+FROM node:14
+# workdir는 이후 지시어에 영향 주므로 가능한 from 다음에 바로 작성하기
+# workdir로 경로 지정해두면 기존 node.js 이미지에 있는 파일 시스템과 안 섞이고 별도 폴더로 만들어 관리할 수 있으므로 초반에 경로 지정해두는 게 좋음
+WORKDIR /app
+# . 이 현재 경로 의미. workdir로 /app 지정했기에 모든 지시어들 /app에서 실행함. 그래서 소스코드 복사할 때도 /app 안에 복사해야 함.
+COPY . .
+
+RUN npm install
+ENV COLOR=red
+USER node
+EXPOSE 3000
+CMD ["npm", "start"]

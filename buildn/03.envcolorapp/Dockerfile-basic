@@ -1,0 +1,8 @@
+# node.js 14 버전 컴퓨터에 설지 안돼있어도 도커 사용하면 컨테이너 이미지 통해 node.js 애플리케이션 빌드 및 실행 가능
+FROM node:14
+
+COPY ./ /
+
+RUN npm install
+
+CMD ["npm", "start"]
